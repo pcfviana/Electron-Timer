@@ -9,4 +9,11 @@ app.on('ready', () => {
         height: 400
     });
     
+    var url = `file://${__dirname}/app/index.html`;
+    mainWindow.loadURL(url);
+    
+});
+
+app.on('window-all-closed', () => {
+    app.quit();
 });
