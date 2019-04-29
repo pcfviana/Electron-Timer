@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 
 app.on('ready', () => {
@@ -16,4 +16,14 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
     app.quit();
+});
+
+ipcMain.on('open-window-about', () => {
+    let aboutWindow = new BrowserWindow({
+        width: 300,
+        height: 200
+    });
+
+    var url = `file://${__dirname}/app/about.html`;
+    aboutWindow.loadURL(url);
 });
